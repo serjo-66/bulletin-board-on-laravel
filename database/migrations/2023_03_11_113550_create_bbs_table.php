@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('bbs', function (Blueprint $table) {
             $table->id();
             $table->string('title', 50);
-            $table->text('content');
+            $table->text('description');
             $table->float('price');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();

@@ -11,9 +11,9 @@
             <input value="{{ $bb->title }}" name="title" id="txtTitle" class="form-control">
         </div>
         <div class="form-group">
-            <label for="txtContent">Описание</label>
-            <textarea value="{{ $bb->content }}" name="content" id="txtContent" class="form-control"
-                      row="3" ></textarea>
+            <label for="txtDescription">Описание</label>
+            <textarea name="description" id="txtDescription" class="form-control"
+                      row="3" >{{ $bb->description }}</textarea>
         </div>
         <div class="form-group">
             <label for="txtPrice">Цена</label>

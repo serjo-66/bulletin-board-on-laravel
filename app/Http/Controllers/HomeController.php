@@ -37,7 +37,7 @@ class HomeController extends Controller
     public function storeBb(Request $request)
     {
         Auth::user()->bbs()->create(['title' => $request->title,
-            'content' => $request->content,
+            'description' => $request->description,
             'price' => $request->price]);
         return redirect()->route('home');
     }
@@ -50,7 +50,7 @@ class HomeController extends Controller
     public function updateBb(Request $request, Bb $bb)
     {
         $bb->fill(['title' => $request->title,
-            'content' => $request->content,
+            'description' => $request->description,
             'price' => $request->price]);
         $bb->save();
         return redirect()->route('home');

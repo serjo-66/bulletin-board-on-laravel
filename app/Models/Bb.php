@@ -8,7 +8,7 @@ use App\Models\User;
 
 class Bb extends Model
 {
-    protected $fillable = ['title', 'content', 'price'];
+    protected $fillable = ['title', 'description', 'price'];
 
     public function user()
     {

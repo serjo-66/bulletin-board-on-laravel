@@ -10,8 +10,8 @@
             <input name="title" id="txtTitle" class="form-control">
         </div>
         <div class="form-group">
-            <label for="txtContent">Описание</label>
-            <textarea name="content" id="txtContent" class="form-control"
+            <label for="txtDescription">Описание</label>
+            <textarea name="description" id="txtDescription" class="form-control"
                       row="3"></textarea>
         </div>
         <div class="form-group">

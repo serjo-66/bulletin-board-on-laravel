@@ -4,7 +4,7 @@
 
 @section('main')
     <h2>{{ $bb->title }}</h2>
-    <p>{{ $bb->content }}</p>
+    <p>{{ $bb->description }}</p>
     <p>{{ $bb->price }} руб.</p>
     <p>Автор: {{ $bb->user->name }}</p>
     <form action="{{ route('bb.destroy', ['bb' => $bb->id]) }}" method="POST">
