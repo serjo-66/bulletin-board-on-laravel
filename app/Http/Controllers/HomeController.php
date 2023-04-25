@@ -14,6 +14,19 @@ class HomeController extends Controller
      *
      * @return void
      */
+    private const BB_VALIDATOR = [
+        'title' => 'required|max:50',
+        'description' => 'required',
+        'price' => 'required|numeric',
+    ];
+
+    private const BB_ERROR_MESSAGE = [
+        'price.required' => 'Отдать товар бесплатно нельзя',
+        'required' => 'Заполните это поле',
+        'max' => 'Значение не должно быть длинее :max символов',
+        'numeric' => 'Введите число',
+    ];
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -36,9 +49,12 @@ class HomeController extends Controller
 
     public function storeBb(Request $request)
     {
-        Auth::user()->bbs()->create(['title' => $request->title,
-            'description' => $request->description,
-            'price' => $request->price]);
+        $validated = $request->validate(self::BB_VALIDATOR, self::BB_ERROR_MESSAGE);
+
+        Auth::user()->bbs()->create(['title' => $validated['title'],
+                                    'description' => $validated['description'],
+                                    'price' => $validated['price'],]);
+
         return redirect()->route('home');
     }
 
@@ -49,9 +65,12 @@ class HomeController extends Controller
 
     public function updateBb(Request $request, Bb $bb)
     {
-        $bb->fill(['title' => $request->title,
-            'description' => $request->description,
-            'price' => $request->price]);
+        $validated = $request->validate(self::BB_VALIDATOR, self::BB_ERROR_MESSAGE);
+
+        $bb->fill(['title' => $validated['title'],
+                   'description' => $validated['description'],
+                   'price' => $validated['price'],]);
+
         $bb->save();
         return redirect()->route('home');
     }
